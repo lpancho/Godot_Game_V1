@@ -28,6 +28,9 @@ func _physics_process(delta):
 		self.motion.y = 0
 		self.jumps = 0
 		self.jump_pressed = false # This is so the player can 'bounce'.
+		
+		if self.stateManager.state == "JUMP":
+			self.stateManager.request_state_change("IDLE", 0, 2)
 
 	# -----------------------------------------------------------------
 	# You *cannot* just use Input.is_action_just_pressed("ui_up") here.
@@ -43,6 +46,8 @@ func _physics_process(delta):
 		if not self.jump_pressed:
 			
 			if self.jumps < self.max_jumps:
+				
+				self.stateManager.request_state_change("JUMP", 1, 2)
 				
 				self.jump_pressed = true
 				self.motion.y = -self.jump_velocity
