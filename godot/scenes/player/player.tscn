@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/images/player.png" type="Texture" id=1]
 [ext_resource path="res://scenes/player/StateManager.gd" type="Script" id=2]
-[ext_resource path="res://scenes/player/ExampleInput.gd" type="Script" id=3]
+[ext_resource path="res://scenes/player/VerticalMotion.gd" type="Script" id=3]
+[ext_resource path="res://scenes/player/HorizontalMotion.gd" type="Script" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 
@@ -10,13 +11,14 @@ custom_solver_bias = 0.0
 radius = 43.0347
 height = 133.402
 
-[node name="player" type="KinematicBody2D"]
+[node name="player" type="KinematicBody2D" index="0"]
 
 position = Vector2( 131.781, 120.611 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
+_sections_unfolded = [ "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index", "collision" ]
 
 [node name="player" type="Sprite" parent="." index="0"]
 
@@ -69,8 +71,12 @@ blend_times = [  ]
 
 script = ExtResource( 2 )
 
-[node name="ExampleInput" type="Node" parent="." index="5"]
+[node name="VerticalMotion" type="Node" parent="." index="5"]
 
 script = ExtResource( 3 )
+
+[node name="HorizontalMotion" type="Node" parent="." index="6"]
+
+script = ExtResource( 4 )
 
 
